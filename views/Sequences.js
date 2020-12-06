@@ -1,0 +1,78 @@
+import React, { useState, useEffect } from 'react';
+import { Container, Text, Content, List, ListItem, Left, Fab, Icon } from 'native-base';
+import globalStyles from '../styles/global';
+
+import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const Sequences = () => {
+    // State of sequences
+    const [sequences, setSequences] = useState([]);
+
+    // Using useEffect to update the state
+    useEffect(() => {
+        const obtainSequencesStorage = async () => {
+            try {
+                const sequencesStorage = await AsyncStorage.getItem('sequences');
+                if (sequencesStorage){
+                    setSequences(JSON.parse(sequencesStorage));
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        obtainSequencesStorage();
+    }, []);
+
+    // Save sequences into the storage
+    const saveSequencesStorage = async (sequencesJSON) => {
+        try {
+            await AsyncStorage.setItem('sequences', sequencesJSON);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const navigation = useNavigation();
+
+    return (
+        <Container style={globalStyles.container}>
+            <Content style={globalStyles.content}>
+                {sequences.length === 0 ? (
+                    <>
+                        <Text style={globalStyles.text}>No sequences found</Text>
+                        <Text style={[globalStyles.text, {fontWeight: 'bold'}]}>Start creating your own!</Text>
+                    </>
+                ) : (
+                    <>
+                        <Text style={globalStyles.text}>Choose one of the available sequences</Text>
+                        <Text style={[globalStyles.text, {fontWeight: 'bold', marginTop: 0}]}>Or create a new one!</Text>
+                    </>
+                )
+                }
+                <List style={globalStyles.list}>
+                    {sequences.map(seq => (
+                        <ListItem 
+                            key={seq.id}
+                            onPress={() => navigation.navigate("Sequence", {seq, setSequences, saveSequencesStorage})}
+                        >
+                            <Left>
+                                <Text>{seq.sequenceName}</Text>
+                            </Left>
+                        </ListItem>
+
+                    ))}
+                </List>
+            </Content>
+            <Fab 
+                style={globalStyles.fab}
+                onPress={() => navigation.navigate("NewSequence", {sequences, setSequences, saveSequencesStorage})}
+            >
+                    <Icon name="add" style={{fontSize:30}} />
+                </Fab>  
+        </Container>
+    );
+
+}
+ 
+export default Sequences;
