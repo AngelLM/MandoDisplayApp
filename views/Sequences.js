@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Alert } from 'react-native';
 import { Container, Text, Content, List, ListItem, Left, Fab, Icon } from 'native-base';
 import globalStyles from '../styles/global';
 
@@ -33,6 +34,27 @@ const Sequences = () => {
         }
     }
 
+    // Delete sequence from storage
+    const deleteSequenceStorage = id => {
+        // Filter all the sequences in the state to find the one with the id selected
+        const filteredSequences = sequences.filter( seq => seq.id !== id);
+        setSequences(filteredSequences);
+        saveSequencesStorage(JSON.stringify(filteredSequences));
+    }
+
+    // Delete Confirmation
+    const deleteSequenceConfirmation = (seq) => {
+        const {id, sequenceName} = seq;
+        Alert.alert(
+            `Are you sure you want to delete the sequence ${sequenceName}?`,
+            'Deleted sequences cannot be restored.',
+            [
+                {text: 'Delete', onPress: () => {deleteSequenceStorage(id)}},
+                {text: 'Keep', style: 'cancel'}
+            ]
+        )
+    }
+
     const navigation = useNavigation();
 
     return (
@@ -54,7 +76,8 @@ const Sequences = () => {
                     {sequences.map(seq => (
                         <ListItem 
                             key={seq.id}
-                            onPress={() => navigation.navigate("Sequence", {seq, setSequences, saveSequencesStorage})}
+                            onPress={() => navigation.navigate("Sequence", {sequences, seq, setSequences, saveSequencesStorage})}
+                            onLongPress={() => deleteSequenceConfirmation(seq)}
                         >
                             <Left>
                                 <Text>{seq.sequenceName}</Text>

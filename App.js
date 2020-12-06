@@ -8,8 +8,9 @@ const Stack = createStackNavigator();
 
 // Import views
 import Sequences from './views/Sequences';
-import Sequence from './views/Sequence';
 import NewSequence from './views/NewSequence';
+import Sequence from './views/Sequence';
+import State from './views/State';
 import Preview from './views/Preview';
 
 
@@ -35,6 +36,21 @@ const App = () => {
                 }
               }}
             />
+              <Stack.Screen 
+                name='NewSequence'
+                component={NewSequence}
+                options={{
+                  title: 'Create New Sequence',
+                  headerTitleAlign: 'center',
+                  headerTintColor: '#FFF',
+                  headerStyle:{
+                    backgroundColor: '#244a3b'
+                  },
+                  headerTitleStyle:{
+                    fontWeight: 'bold'
+                  }
+                }}
+              />
             <Stack.Screen 
               name='Sequence'
               component={Sequence}
@@ -51,18 +67,11 @@ const App = () => {
               })}
             />
             <Stack.Screen 
-              name='NewSequence'
-              component={NewSequence}
+              name='State'
+              component={State}
               options={{
-                title: 'Create New Sequence',
-                headerTitleAlign: 'center',
-                headerTintColor: '#FFF',
-                headerStyle:{
-                  backgroundColor: '#244a3b'
-                },
-                headerTitleStyle:{
-                  fontWeight: 'bold'
-                }
+                title: 'State',
+                headerShown: false
               }}
             />
             <Stack.Screen 
