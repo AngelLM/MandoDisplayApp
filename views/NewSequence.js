@@ -32,7 +32,7 @@ const NewSequence = ({route}) => {
 
         // Create a new sequence with some initial parameters
         const lightSequences = [];
-        const colorSequence = "";
+        const colorSequence = 'red';
         const sequence = { sequenceName, colorSequence, lightSequences };
         sequence.id = shortid.generate();
         

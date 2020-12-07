@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Alert } from 'react-native';
-import { Container, Text, Content, List, ListItem, Left, Fab, Icon } from 'native-base';
+import { Container, Text, Content, List, ListItem, Left, Right, Fab, Icon } from 'native-base';
 import globalStyles from '../styles/global';
 
 import { useNavigation } from '@react-navigation/native';
@@ -29,8 +29,9 @@ const Sequences = () => {
     const saveSequencesStorage = async (sequencesJSON) => {
         try {
             await AsyncStorage.setItem('sequences', sequencesJSON);
+            // console.log("Saved");
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
 
@@ -59,19 +60,19 @@ const Sequences = () => {
 
     return (
         <Container style={globalStyles.container}>
-            <Content style={globalStyles.content}>
-                {sequences.length === 0 ? (
+            {sequences.length === 0 ? (
                     <>
                         <Text style={globalStyles.text}>No sequences found</Text>
                         <Text style={[globalStyles.text, {fontWeight: 'bold'}]}>Start creating your own!</Text>
                     </>
                 ) : (
-                    <>
-                        <Text style={globalStyles.text}>Choose one of the available sequences</Text>
-                        <Text style={[globalStyles.text, {fontWeight: 'bold', marginTop: 0}]}>Or create a new one!</Text>
-                    </>
+                    // <>
+                        <Text style={globalStyles.text}>Stored sequences: </Text>
+                        // <Text style={[globalStyles.text, {fontWeight: 'bold', marginTop: 0}]}>Or create a new one!</Text>
+                    // </>
                 )
                 }
+            <Content style={globalStyles.contentSmall}>
                 <List style={globalStyles.list}>
                     {sequences.map(seq => (
                         <ListItem 
@@ -82,6 +83,9 @@ const Sequences = () => {
                             <Left>
                                 <Text>{seq.sequenceName}</Text>
                             </Left>
+                            <Right>
+                                <Icon name='desktop-outline' style={{color:'#000'}}></Icon>
+                            </Right>
                         </ListItem>
 
                     ))}
