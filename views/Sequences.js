@@ -84,7 +84,7 @@ const Sequences = () => {
                                 <Text>{seq.sequenceName}</Text>
                             </Left>
                             <Right>
-                                <Icon name='desktop-outline' style={{color:'#000'}}></Icon>
+                                <Icon name='play-outline' style={{color:'#000'}}></Icon>
                             </Right>
                         </ListItem>
 
