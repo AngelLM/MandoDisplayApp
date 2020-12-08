@@ -41,8 +41,8 @@ const State = ({route}) => {
                     <Card style={globalStyles.ledBoard} >
                         {/* Top Leds */}
                         <View style={globalStyles.topLedsContainer}>
-                            <LedButton buttonStyle={globalStyles.topLedButton} stateLights={state.lightState} setStateLights={setStateLights} id = '1' />
                             <LedButton buttonStyle={globalStyles.topLedButton} stateLights={state.lightState} setStateLights={setStateLights} id = '0' />
+                            <LedButton buttonStyle={globalStyles.topLedButton} stateLights={state.lightState} setStateLights={setStateLights} id = '1' />
                             <LedButton buttonStyle={globalStyles.topLedButton} stateLights={state.lightState} setStateLights={setStateLights} id = '2' />
                             <LedButton buttonStyle={globalStyles.topLedButton} stateLights={state.lightState} setStateLights={setStateLights} id = '3' />
                             <LedButton buttonStyle={globalStyles.topLedButton} stateLights={state.lightState} setStateLights={setStateLights} id = '4' />

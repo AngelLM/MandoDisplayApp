@@ -20,6 +20,17 @@ const globalStyles = StyleSheet.create({
         marginVertical: '2.5%',
         flex: 1
     },
+    durationCard:{
+        width: '50%'
+    },
+    durationButton:{
+        width: 40,
+        height: 40
+    }, 
+    durationButtonText:{
+        color: "#FFF",
+        fontSize: 16
+    }, 
     list: {
         backgroundColor: '#FFF',
         marginHorizontal: '2.5%',
@@ -28,6 +39,11 @@ const globalStyles = StyleSheet.create({
         backgroundColor: 'transparent', 
         elevation: 0,
 
+    },
+    topbarButton:{
+        backgroundColor: 'transparent',
+        marginRight: 10,
+        elevation: 0
     },
     title: {
         textAlign: 'center',
@@ -54,6 +70,13 @@ const globalStyles = StyleSheet.create({
     input: {
         backgroundColor: "#FFF",
         marginBottom: 15
+    },
+    durationInput:{
+        borderWidth:1,
+        marginHorizontal: 20,
+        height: 38,
+        textAlignVertical: 'center',
+        textAlign: 'center',
     },
     button: {
         backgroundColor: '#1b322c',
@@ -166,6 +189,87 @@ const globalStyles = StyleSheet.create({
     },
     ledOff:{
         backgroundColor: '#622f2f'
+    },
+    smallLedBoard:{
+        backgroundColor: "#000",
+        borderWidth:2,
+        width: 292,
+        padding: 10,
+        elevation:5,
+        borderBottomWidth: 2,
+        borderTopWidth: 2,
+        borderLeftWidth: 2,
+        borderRightWidth: 2,
+        borderRadius: 2
+    },
+    smallTopLedsContainer: {
+        flexDirection: 'row',
+        marginBottom: 15,
+    },
+    smallTopLed:{
+        height:20,
+        width: 7,
+        borderRadius:0,
+        marginRight: 6.5
+    },
+    smallDigitDisplayContainer: {
+        flexDirection: 'row',
+    },
+    smallDigitDisplay: {
+        width: 41.5,
+        height: 66,
+        marginRight: 6.5,
+        marginLeft: 6,
+    },
+    smallVerticalLed:{
+        height:29,
+        width:5,
+        borderRadius:0,
+        position: 'relative'
+    },
+    smallHorizontalLed:{
+        height:5,
+        width:25,
+        borderRadius:0,
+        position: 'relative'
+    },
+    smallPointLed:{
+        height:5,
+        width:5,
+        borderRadius:0,
+        position: 'relative'
+    },
+    smallSegmentA: {
+        top: 0,
+        left: 5.5,
+    },
+    smallSegmentB: {
+        top: -3,
+        left: 31.5,
+    },
+    smallSegmentC: {
+        top: 0,
+        left: 31.5,
+    },
+    smallSegmentD: {
+        top: -2.5,
+        left: 5.5,
+    },
+    smallSegmentE: {
+        top: -35,
+        left: -0.5,
+    },
+    smallSegmentF: {
+        top: -96,
+        left: -0.5,
+    },
+    smallSegmentG: {
+        top: -96,
+        left: 5.5,
+    },
+    smallSegmentP: {
+        top: -72.5,
+        left: 40,
     },
 });
 

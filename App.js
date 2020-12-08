@@ -12,6 +12,7 @@ import NewSequence from './views/NewSequence';
 import Sequence from './views/Sequence';
 import State from './views/State';
 import Preview from './views/Preview';
+import AddStateButton from './components/ui/AddStateButton';
 
 
 const App = () => {
@@ -63,7 +64,13 @@ const App = () => {
                 },
                 headerTitleStyle:{
                   fontWeight: 'bold'
-                }
+                },
+                headerRight: () => <AddStateButton
+                                      sequences={route.params.sequences}
+                                      seq={route.params.seq}
+                                      setSequences={route.params.setSequences}
+                                      saveSequencesStorage={route.params.saveSequencesStorage}
+                                      />
               })}
             />
             <Stack.Screen 
