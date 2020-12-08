@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler';
 import React from 'react';
+import { View } from 'react-native';
 import { Root } from 'native-base';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -11,8 +12,12 @@ import Sequences from './views/Sequences';
 import NewSequence from './views/NewSequence';
 import Sequence from './views/Sequence';
 import State from './views/State';
+import ColorPick from './views/ColorPick';
 import Preview from './views/Preview';
+
 import AddStateButton from './components/ui/AddStateButton';
+import PlayButton from './components/ui/PlayButton';
+import ColorButton from './components/ui/ColorButton';
 
 
 const App = () => {
@@ -65,12 +70,24 @@ const App = () => {
                 headerTitleStyle:{
                   fontWeight: 'bold'
                 },
-                headerRight: () => <AddStateButton
-                                      sequences={route.params.sequences}
-                                      seq={route.params.seq}
-                                      setSequences={route.params.setSequences}
-                                      saveSequencesStorage={route.params.saveSequencesStorage}
+                headerRight: () =>  <View style={{flexDirection:'row'}}>
+                                      <PlayButton
+
                                       />
+                                      <ColorButton
+                                        sequences={route.params.sequences}
+                                        seqId={route.params.seq.id}
+                                        setSequences={route.params.setSequences}
+                                        saveSequencesStorage={route.params.saveSequencesStorage}
+                                      />
+                                      <AddStateButton
+                                        sequences={route.params.sequences}
+                                        seq={route.params.seq}
+                                        setSequences={route.params.setSequences}
+                                        saveSequencesStorage={route.params.saveSequencesStorage}
+                                        stateIndex={-1}
+                                      />
+                                    </View>
               })}
             />
             <Stack.Screen 
@@ -79,6 +96,21 @@ const App = () => {
               options={{
                 title: 'State',
                 headerShown: false
+              }}
+            />
+            <Stack.Screen 
+              name='ColorPick'
+              component={ColorPick}
+              options={{
+                title: 'Select the LED color',
+                headerTitleAlign: 'center',
+                headerTintColor: '#FFF',
+                headerStyle:{
+                  backgroundColor: '#244a3b'
+                },
+                headerTitleStyle:{
+                  fontWeight: 'bold'
+                }
               }}
             />
             <Stack.Screen 

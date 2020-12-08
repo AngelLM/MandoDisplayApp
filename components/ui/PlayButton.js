@@ -3,7 +3,7 @@ import { Button, Icon } from 'native-base';
 import globalStyles from '../../styles/global';
 import { useNavigation } from '@react-navigation/native';
 
-const AddStateButton = (props) => {
+const PlayButton = (props) => {
     const {sequences, seq, setSequences, saveSequencesStorage} = props
     const navigation = useNavigation();
 
@@ -21,9 +21,9 @@ const AddStateButton = (props) => {
             style={globalStyles.topbarButton}
             onPress={() => navigation.navigate('State', { sequences, seqId:seq.id, state:newState, setSequences, saveSequencesStorage, stateIndex:-1 })}
         >
-            <Icon style={globalStyles.topBarIcon} name="add" />
+            <Icon style={globalStyles.topBarIcon} name="play-outline" />
         </Button>
      );
 }
  
-export default AddStateButton;
+export default PlayButton;

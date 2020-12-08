@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Container, Text, Content, List, ListItem, Left, Right, Button, Icon, Card, CardItem, Input, Grid, Col, Row } from 'native-base';
+import React from 'react';
+import { View, StyleSheet, Alert } from 'react-native';
+import { Container, Text, Content, Button, Card, CardItem, Input } from 'native-base';
 import globalStyles from '../styles/global';
 
 import { useNavigation } from '@react-navigation/native';
@@ -32,6 +32,34 @@ const Sequence = ({route}) => {
         saveSequencesStorage(JSON.stringify(seqNew));
     }
 
+    // Delete Confirmation
+    const deleteSequenceConfirmation = (seqId, stateIndex) => {
+        const {id, sequenceName} = seq;
+        Alert.alert(
+            `Are you sure you want to delete this state?`,
+            'Deleted states cannot be restored.',
+            [
+                {text: 'Delete', onPress: () => {deleteState(seqId, stateIndex)}},
+                {text: 'Keep', style: 'cancel'}
+            ]
+        )
+    }
+
+    const deleteState = (seqId, stateIndex) => {
+        // Copy the sequences array and find the index for the current sequence that it is being edited
+        let seqNew = JSON.parse(JSON.stringify(sequences)); 
+        let index = seqNew.findIndex(s => s.id === seqId);
+        
+        // Edit the copied array to modify the light states to the current sequence
+        seqNew[index].lightSequences.splice(stateIndex,1);
+        // Set the State
+        setSequences(seqNew);
+        // Save it into the storage
+        saveSequencesStorage(JSON.stringify(seqNew));
+        // Navigate to the Sequence view
+        navigation.navigate("Sequence", {sequences:seqNew, seq:seqNew[index], setSequences, saveSequencesStorage})
+    }
+
     return ( 
             <Container style={globalStyles.container}>
                 <Content style={globalStyles.content}>
@@ -42,12 +70,13 @@ const Sequence = ({route}) => {
                     <View>
                         {seq.lightSequences.map((ligSeq, index) => (
                             <View style={{flexDirection: 'row'}}>
-                                <SmallDisplay lightSequence={ligSeq}/>
+                                <SmallDisplay lightSequence={ligSeq} colorSequence={seq.colorSequence}/>
                                 <Card style={globalStyles.durationCard}>
                                     <CardItem bordered>
                                     <View style={{flex:1, justifyContent:"center", flexDirection:'row'}}>
                                                 <Button
                                                     style={styles.editButton}
+                                                    onPress={() => navigation.navigate('State', { sequences, seqId:seq.id, state:ligSeq, setSequences, saveSequencesStorage, stateIndex:index })}
                                                 >
                                                     <Text style={styles.textButton}>
                                                         Edit State
@@ -55,6 +84,7 @@ const Sequence = ({route}) => {
                                                 </Button>
                                                 <Button
                                                     style={styles.deleteButton}
+                                                    onPress={() => deleteSequenceConfirmation(seq.id, index)}
                                                 >
                                                     <Text style={styles.textButton}>
                                                         Delete State
@@ -63,7 +93,7 @@ const Sequence = ({route}) => {
                                         </View>
                                     </CardItem>
                                     <CardItem bordered>
-                                        <View style={{flexDirection:'row', justifyContent: 'center', alignItems:'center'}}>
+                                        <View style={{flex:1, flexDirection:'row', justifyContent: 'center', alignItems:'center'}}>
                                                 <Text>Duration: </Text>
                                                 <Input
                                                     style={globalStyles.durationInput}
@@ -87,7 +117,7 @@ const Sequence = ({route}) => {
 
 const styles = StyleSheet.create({
     editButton:{
-        backgroundColor: 'green',
+        backgroundColor: '#244a3b',
         marginHorizontal: 5
     },
     deleteButton:{

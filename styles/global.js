@@ -42,8 +42,17 @@ const globalStyles = StyleSheet.create({
     },
     topbarButton:{
         backgroundColor: 'transparent',
-        marginRight: 10,
-        elevation: 0
+        marginHorizontal: 5,
+        paddingHorizontal: 0,
+        height: 50,
+        width: 50,
+        elevation: 0,
+        justifyContent: 'center',
+    },
+    topBarIcon:{
+        width: 25,
+        fontSize: 25, 
+        color:'#FFF'
     },
     title: {
         textAlign: 'center',
@@ -72,10 +81,11 @@ const globalStyles = StyleSheet.create({
         marginBottom: 15
     },
     durationInput:{
+        height: 40,
+        width: 70,
         borderWidth:1,
-        marginHorizontal: 20,
-        height: 38,
-        textAlignVertical: 'center',
+        marginHorizontal: 10,
+        // textAlignVertical: 'center',
         textAlign: 'center',
     },
     button: {
