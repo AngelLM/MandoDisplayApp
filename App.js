@@ -72,7 +72,8 @@ const App = () => {
                 },
                 headerRight: () =>  <View style={{flexDirection:'row'}}>
                                       <PlayButton
-
+                                        sequences={route.params.sequences}
+                                        seq={route.params.seq}
                                       />
                                       <ColorButton
                                         sequences={route.params.sequences}
@@ -125,7 +126,8 @@ const App = () => {
                 },
                 headerTitleStyle:{
                   fontWeight: 'bold'
-                }
+                },
+                headerShown: false
               }}
             />
           </Stack.Navigator>

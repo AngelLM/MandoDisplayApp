@@ -23,7 +23,7 @@ const Sequence = ({route}) => {
         let indexSeq = seqNew.findIndex(s => s.id === seq.id);
 
         // Edit the copied array to add the light states to the current sequence
-        seqNew[indexSeq].lightSequences[durIndex].duration = duration;
+        seqNew[indexSeq].lightSequences[durIndex].duration = parseInt(duration);
 
         // Set the State
         setSequences(seqNew);

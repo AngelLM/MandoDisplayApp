@@ -84,7 +84,11 @@ const Sequences = () => {
                                 <Text>{seq.sequenceName}</Text>
                             </Left>
                             <Right>
-                                <Icon name='play-outline' style={{color:'#000'}}></Icon>
+                                <Icon 
+                                    name='play-outline'
+                                    style={{color:'#000'}}
+                                    onPress={() => navigation.navigate('Preview', { sequence: seq })}
+                                />
                             </Right>
                         </ListItem>
 
