@@ -281,6 +281,16 @@ const globalStyles = StyleSheet.create({
         top: -72.5,
         left: 40,
     },
+
+    // PREVIEW
+
+    containerPreview:{
+        backgroundColor: '#000',
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
 });
 
 
