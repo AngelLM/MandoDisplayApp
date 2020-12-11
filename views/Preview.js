@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Animated, View, Text } from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
 import { Container, Content, Button } from 'native-base';
 import globalStyles from '../styles/global';
 
@@ -7,6 +7,9 @@ import SmallDisplay from '../components/SmallDisplay';
 
 
 const Preview = ({route}) => {
+
+    StatusBar.setHidden(true);
+
     // Extracting the params sent via route
     const {colorSequence, lightSequences} = route.params.sequence;
     
