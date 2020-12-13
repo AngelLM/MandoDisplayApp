@@ -10,14 +10,15 @@ const Sequences = () => {
     // State of sequences
     const [sequences, setSequences] = useState([]);
     const [prevStyle, setPrevStyle] = useState({
-                                        leftMargin: 100,
-                                        topMargin: 50,
+                                        leftMargin: 50,
+                                        topMargin: 100,
                                         topLedMargin: 15,
-                                        displayBarWidth: 527
+                                        displayWidth: 527,
                                         topLedHeight: 40,
                                         topLedWidth: 14,
-                                        segmentHeight: 142
-                                        segmentWidth: 83
+                                        segmentHeight: 122,
+                                        segmentWidth: 74
+            
     })
 
     // Using useEffect to update the state
