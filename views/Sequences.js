@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Alert } from 'react-native';
-import { Container, Text, Content, List, ListItem, Left, Right, Fab, Icon } from 'native-base';
+import { Container, Text, Content, List, ListItem, Left, Right, Fab } from 'native-base';
 import globalStyles from '../styles/global';
 
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Octicon from 'react-native-vector-icons/Octicons';
 
 const Sequences = () => {
     // State of sequences
@@ -77,10 +78,7 @@ const Sequences = () => {
                         <Text style={[globalStyles.text, {fontWeight: 'bold'}]}>Start creating your own!</Text>
                     </>
                 ) : (
-                    // <>
-                        <Text style={globalStyles.text}>Stored sequences: </Text>
-                        // <Text style={[globalStyles.text, {fontWeight: 'bold', marginTop: 0}]}>Or create a new one!</Text>
-                    // </>
+                    <Text style={globalStyles.text}>Stored sequences: </Text>
                 )
                 }
             <Content style={globalStyles.contentSmall}>
@@ -88,20 +86,18 @@ const Sequences = () => {
                     {sequences.map(seq => (
                         <ListItem 
                             key={seq.id}
-                            onPress={() => navigation.navigate("Sequence", {sequences, seq, setSequences, saveSequencesStorage})}
+                            onPress={() => seq.lightSequences.length > 0 ? navigation.navigate('Preview', { sequence: seq , prevStyle, setPrevStyle}) : null}
                             onLongPress={() => deleteSequenceConfirmation(seq)}
                         >
                             <Left>
-                                <Text>{seq.sequenceName}</Text>
+                                <Text style={{fontSize: 18, fontWeight: 'bold'}}>{seq.sequenceName}</Text>
                             </Left>
                             <Right>
-                                {seq.lightSequences.length > 0 ? (
-                                    <Icon 
-                                        name='play-outline'
-                                        style={{color:'#000'}}
-                                        onPress={() => navigation.navigate('Preview', { sequence: seq , prevStyle, setPrevStyle})}
-                                    />
-                                    ):(null)}
+                                <Octicon 
+                                    name='pencil'
+                                    style={{fontSize: 26 , color:'#000'}}
+                                    onPress={() => navigation.navigate("Sequence", {sequences, seq, setSequences, saveSequencesStorage})}
+                                />        
                             </Right>
                         </ListItem>
 
@@ -112,7 +108,7 @@ const Sequences = () => {
                 style={globalStyles.fab}
                 onPress={() => navigation.navigate("NewSequence", {sequences, setSequences, saveSequencesStorage})}
             >
-                    <Icon name="add" style={{fontSize:30}} />
+                    <Octicon name="plus" style={{fontSize:30}} />
                 </Fab>  
         </Container>
     );

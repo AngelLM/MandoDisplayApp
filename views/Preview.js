@@ -353,47 +353,6 @@ const Preview = ({route}) => {
                      </View>
                 </View>
         </Container>
-
-        // <Container style={styles.containerPreview}>
-        //     <Svg width="90" height="122" viewBox="0 0 73 121" 
-        //         style={styles.scaled}> 
-        //         <G>
-        //             <Polygon
-        //                 points="12,0  61,0  61,9  12,9"
-        //                 fill= {previewState.state.lightState[20]? colorSequence : 'black'}
-        //             />
-        //             <Polygon
-        //                 points="64,6  73,6  73,59  64,59"
-        //                 fill= {previewState.state.lightState[21]? colorSequence : 'black'}
-        //             />
-        //             <Polygon
-        //                 points="64,62  73,62  73,115  64,115"
-        //                 fill= {previewState.state.lightState[22]? colorSequence : 'black'}
-        //             />
-        //             <Polygon
-        //                 points="61,112  61,121  12,121  12,112"
-        //                 fill= {previewState.state.lightState[23]? colorSequence : 'black'}
-        //             />
-        //             <Polygon
-        //                 points="9,115  0,115  0,62  9,62"
-        //                 fill= {previewState.state.lightState[24]? colorSequence : 'black'}
-        //             />
-        //             <Polygon
-        //                 points="9,59  0,59  0,6  9,6"
-        //                 fill= {previewState.state.lightState[25]? colorSequence : 'black'}
-        //             />
-        //             <Polygon
-        //                 points="12,56 12,65 61,65 61,56"
-        //                 fill= {previewState.state.lightState[26]? colorSequence : 'black'}
-        //             />
-        //             <Polygon
-        //                 points="80,112 89,112 89,121 80,121"
-        //                 fill= {previewState.state.lightState[27]? colorSequence : 'black'}
-        //             />
-        //         </G>
-        //     </Svg>
-        // </Container>
-
      );
 }
 

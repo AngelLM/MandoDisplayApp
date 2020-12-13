@@ -50,8 +50,7 @@ const globalStyles = StyleSheet.create({
         justifyContent: 'center',
     },
     topBarIcon:{
-        width: 25,
-        fontSize: 25, 
+        fontSize: 30, 
         color:'#FFF'
     },
     title: {

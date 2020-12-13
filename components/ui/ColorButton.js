@@ -14,7 +14,7 @@ const ColorButton = (props) => {
             style={globalStyles.topbarButton}
             onPress={() => navigation.navigate('ColorPick', { sequences, seqId, setSequences, saveSequencesStorage })}
         >
-            <Icon style={globalStyles.topBarIcon} name="color-fill-outline" />
+            <Icon style={[globalStyles.topBarIcon, {fontSize: 25, width: 25}]} name="color-fill-outline" />
         </Button>
      );
 }

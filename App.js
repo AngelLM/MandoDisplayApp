@@ -16,8 +16,9 @@ import ColorPick from './views/ColorPick';
 import Preview from './views/Preview';
 
 import AddStateButton from './components/ui/AddStateButton';
-import PlayButton from './components/ui/PlayButton';
 import ColorButton from './components/ui/ColorButton';
+import SettingsButton from './components/ui/SettingsButton';
+import HelpButton from './components/ui/HelpButton';
 
 
 const App = () => {
@@ -30,7 +31,7 @@ const App = () => {
             <Stack.Screen 
               name='Sequences'
               component={Sequences}
-              options={{
+              options={({route}) => ({
                 title: 'Mando Chest Display',
                 headerTitleAlign: 'center',
                 headerTintColor: '#FFF',
@@ -39,8 +40,12 @@ const App = () => {
                 },
                 headerTitleStyle:{
                   fontWeight: 'bold'
-                }
-              }}
+                },
+                headerRight: () =>  <SettingsButton
+                                    />,
+                headerLeft: () =>  <HelpButton
+                />
+              })}
             />
               <Stack.Screen 
                 name='NewSequence'
@@ -71,10 +76,6 @@ const App = () => {
                   fontWeight: 'bold'
                 },
                 headerRight: () =>  <View style={{flexDirection:'row'}}>
-                                      <PlayButton
-                                        sequences={route.params.sequences}
-                                        seq={route.params.seq}
-                                      />
                                       <ColorButton
                                         sequences={route.params.sequences}
                                         seqId={route.params.seq.id}
