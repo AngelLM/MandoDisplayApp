@@ -6,35 +6,63 @@ import globalStyles from '../styles/global';
 import { useNavigation } from '@react-navigation/native';
 import shortid from 'shortid';
 
-const NewSequence = ({route}) => {
+const ImportSequence = ({route}) => {
     // Extracting the params sent via route
     const { sequences, setSequences, saveSequencesStorage } = route.params;
-    
+
     // Navigation
     const navigation = useNavigation();
 
     // Setting up the state
-    const [sequenceName, setSequenceName] = useState('');
+    const [sequenceCode, setSequenceCode] = useState('');
     const [toastMessage, setToastMessage] = useState(null);
 
     const handleSubmit = () => {
-        // Check if there is a name for the new sequence
-        if (sequenceName.trim() === ''){
-            setToastMessage('Sequence name is required');
-
+        if (sequenceCode.trim() === ''){
+            setToastMessage('Sequence code is required');
             setTimeout(() => {
                 setToastMessage(null);
             }, 3000);
-
             return;
         }
 
-        // Create a new sequence with some initial parameters
-        const lightSequences = [];
-        const colorSequence = '#ff0000';
+        if (sequenceCode.length<60 || (sequenceCode.match(/MCD/g) || []).length!=2){
+            setToastMessage('Sequence code invalid');
+            setTimeout(() => {
+                setToastMessage(null);
+            }, 3000);
+            return;
+        }
+
+        // Split the sequence
+        const splitted = sequenceCode.split("/");
+        // Remove first and last element (MCD)
+        splitted.pop();
+        splitted.shift();
+
+        const sequenceName = splitted[0];
+        const colorSequence = splitted[1];
+        var lightSequences = [];
+
+        var i;
+        for (i = 2; i<splitted.length; i+=2){
+            var lightState = [];
+            const states = splitted[i].split("")
+           
+            for (const state of states){
+                lightState.push(state==="1");
+            }
+            var duration = parseInt(splitted[i+1]);
+            const item = {
+                lightState,
+                duration
+            }
+            lightSequences.push(item)
+        }
+
         const sequence = { sequenceName, colorSequence, lightSequences };
         sequence.id = shortid.generate();
-        
+
         // Add the sequence to the state
         const sequenceNew = [...sequences, sequence];
         setSequences(sequenceNew);
@@ -43,15 +71,14 @@ const NewSequence = ({route}) => {
         saveSequencesStorage(JSON.stringify(sequenceNew));
 
         // Send toast message
-        setToastMessage('New sequence successfully created');
-
+        setToastMessage('Sequence successfully imported');
+        
         setTimeout(() => {
             setToastMessage(null);
         }, 3000);
 
         // Navigate to the Sequences view
         navigation.navigate("Sequences");
-
     }
 
     const showToast = () => {
@@ -69,8 +96,8 @@ const NewSequence = ({route}) => {
                     <Form style={{marginTop: 20}}>
                         <Item inlineLabel last style={globalStyles.input}>
                             <Input
-                                placeholder="Sequence Name"
-                                onChangeText={text => setSequenceName(text)}
+                                placeholder="Paste here the sequence code"
+                                onChangeText={text => setSequenceCode(text)}
                             />
                         </Item>
                         <Button
@@ -79,7 +106,7 @@ const NewSequence = ({route}) => {
                             square
                             onPress={() => handleSubmit()}    
                         >
-                            <Text style={globalStyles.buttonText}>Create</Text>
+                            <Text style={globalStyles.buttonText}>Import</Text>
                         </Button>
                     </Form>
                 </View>
@@ -89,4 +116,4 @@ const NewSequence = ({route}) => {
      );
 }
  
-export default NewSequence;
+export default ImportSequence;

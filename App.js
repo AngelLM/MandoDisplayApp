@@ -1,6 +1,5 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import { View } from 'react-native';
 import { Root } from 'native-base';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -11,6 +10,8 @@ const Stack = createStackNavigator();
 import Start from './views/Start';
 import Sequences from './views/Sequences';
 import NewSequence from './views/NewSequence';
+import ImportSequence from './views/ImportSequence';
+import ExportSequence from './views/ExportSequence';
 import Sequence from './views/Sequence';
 import State from './views/State';
 import ColorPick from './views/ColorPick';
@@ -19,8 +20,6 @@ import TestPreview from './views/TestPreview';
 import Settings from './views/Settings';
 import About from './views/About';
 
-import AddStateButton from './components/ui/AddStateButton';
-import ColorButton from './components/ui/ColorButton';
 import HelpButton from './components/ui/HelpButton';
 
 const App = () => {
@@ -28,8 +27,7 @@ const App = () => {
     <>
       <Root>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Start"
-          >
+          <Stack.Navigator initialRouteName="Start">
             <Stack.Screen 
               name='Start'
               component={Start}
@@ -69,7 +67,37 @@ const App = () => {
                 name='NewSequence'
                 component={NewSequence}
                 options={{
-                  title: 'Create New Sequence',
+                  title: 'Create New Display Sequence',
+                  headerTitleAlign: 'center',
+                  headerTintColor: '#FFF',
+                  headerStyle:{
+                    backgroundColor: '#244a3b'
+                  },
+                  headerTitleStyle:{
+                    fontWeight: 'bold'
+                  }
+                }}
+              />
+              <Stack.Screen 
+                name='ImportSequence'
+                component={ImportSequence}
+                options={{
+                  title: 'Import Display Sequence',
+                  headerTitleAlign: 'center',
+                  headerTintColor: '#FFF',
+                  headerStyle:{
+                    backgroundColor: '#244a3b'
+                  },
+                  headerTitleStyle:{
+                    fontWeight: 'bold'
+                  }
+                }}
+              />
+              <Stack.Screen 
+                name='ExportSequence'
+                component={ExportSequence}
+                options={{
+                  title: 'Export Display Sequence',
                   headerTitleAlign: 'center',
                   headerTintColor: '#FFF',
                   headerStyle:{
@@ -93,21 +121,6 @@ const App = () => {
                 headerTitleStyle:{
                   fontWeight: 'bold'
                 },
-                headerRight: () =>  <View style={{flexDirection:'row'}}>
-                                      <ColorButton
-                                        sequences={route.params.sequences}
-                                        seqId={route.params.seq.id}
-                                        setSequences={route.params.setSequences}
-                                        saveSequencesStorage={route.params.saveSequencesStorage}
-                                      />
-                                      <AddStateButton
-                                        sequences={route.params.sequences}
-                                        seq={route.params.seq}
-                                        setSequences={route.params.setSequences}
-                                        saveSequencesStorage={route.params.saveSequencesStorage}
-                                        stateIndex={-1}
-                                      />
-                                    </View>
               })}
             />
             <Stack.Screen 

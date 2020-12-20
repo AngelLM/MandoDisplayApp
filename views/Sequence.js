@@ -7,6 +7,11 @@ import { useNavigation } from '@react-navigation/native';
 
 import SmallDisplay from '../components/SmallDisplay';
 
+import AddStateButton from '../components/ui/AddStateButton';
+import ColorButton from '../components/ui/ColorButton';
+import ExportButton from '../components/ui/ExportButton';
+
+
 
 const Sequence = ({route}) => {
     // Extracting the params sent via route
@@ -20,8 +25,31 @@ const Sequence = ({route}) => {
         setEditSequences(seqCopies);
     }, [])
 
+    const iSeq = sequences.findIndex(s => s.id === seq.id);
+
     // Navigation
     const navigation = useNavigation();
+    navigation.setOptions({
+            headerRight: () =>  <View style={{flexDirection:'row'}}>
+                                    <ExportButton
+                                      sequence = {sequences[iSeq]}
+                                    />
+                                    <ColorButton
+                                        sequences={editSequences}
+                                        seqId={seq.id}
+                                        setSequences={setSequences}
+                                        saveSequencesStorage={saveSequencesStorage}
+                                    />
+                                    <AddStateButton
+                                        sequences={editSequences}
+                                        seq={seq}
+                                        setSequences={setSequences}
+                                        saveSequencesStorage={saveSequencesStorage}
+                                        stateIndex={-1}
+                                    />
+                                </View>,
+                        })
+
     // Write the new duration
     const writeNewDuration = (duration, durIndex) => {
         // Copy the sequences array and find the index for the current sequence that it is being edited
@@ -41,7 +69,6 @@ const Sequence = ({route}) => {
 
     // Delete Confirmation
     const deleteSequenceConfirmation = (seqId, stateIndex) => {
-        const {id, sequenceName} = seq;
         Alert.alert(
             `Are you sure you want to delete this state?`,
             'Deleted states cannot be restored.',

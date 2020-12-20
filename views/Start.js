@@ -3,8 +3,7 @@ import { Container, Text, H1, H3} from 'native-base';
 import { Linking, View, StyleSheet } from 'react-native';
 import globalStyles from '../styles/global';
 import * as Progress from 'react-native-progress';
-import { useNavigation } from '@react-navigation/native';
-
+import { useNavigation, StackActions, NavigationActions } from '@react-navigation/native';
 
 const Start = () => {
     const randomLoadText = ["Destroying Alderaan...", 
@@ -45,7 +44,7 @@ const Start = () => {
             if (progress > 1) {
                 progress = 1;
                 clearInterval(timer);
-                navigation.navigate('Sequences');
+                navigation.reset({index:0, routes:[{name: 'Sequences'}]})
             }
             setState({ progress });
               }, 250);
@@ -59,9 +58,9 @@ const Start = () => {
                     <H1 style={globalStyles.title}>
                         Mando Chest Display
                     </H1>
-                    <H3 style={globalStyles.subtitle}>Coded by <H3 
+                    <H3 style={globalStyles.subtitle}>Proudly coded by <H3 
                                                                 style={{color: '#1b322c'}}
-                                                                onPress={() => Linking.openURL('http://www.angel-lm.com')}>Ángel L.M.</H3>
+                                                                onPress={() => Linking.openURL('http://www.angel-lm.com')}>Ángel LM</H3>
                     </H3>
                     <View style={{borderBottomColor: 'white', borderBottomWidth: 1}}></View>
                 </View>

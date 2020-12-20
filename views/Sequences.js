@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Alert } from 'react-native';
-import { Container, Text, Content, List, ListItem, Left, Right, Fab } from 'native-base';
+import { Alert, BackHandler } from 'react-native';
+import { Container, Text, Content, List, ListItem, Left, Right, Fab, View } from 'native-base';
 import globalStyles from '../styles/global';
 
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Octicon from 'react-native-vector-icons/Octicons';
+import Entypo from 'react-native-vector-icons/Entypo';
+
 import SettingsButton from '../components/ui/SettingsButton';
+import ImportButton from '../components/ui/ImportButton';
 
 const Sequences = () => {
 
@@ -54,7 +57,6 @@ const Sequences = () => {
     const saveSequencesStorage = async (sequencesJSON) => {
         try {
             await AsyncStorage.setItem('sequences', sequencesJSON);
-            // console.log("Saved");
         } catch (error) {
             console.log(error);
         }
@@ -64,7 +66,6 @@ const Sequences = () => {
     const saveStyleStorage = async (stylesJSON) => {
         try {
             await AsyncStorage.setItem('prevStyle', stylesJSON);
-            // console.log("Saved");
         } catch (error) {
             console.log(error);
         }
@@ -93,18 +94,21 @@ const Sequences = () => {
 
     const navigation = useNavigation();
 
+
     navigation.setOptions({
-        headerRight: () =>  <SettingsButton
+        headerRight: () =>  <View style={{flexDirection:'row'}}>
+                                <ImportButton
+                                      sequences={sequences}
+                                      setSequences={setSequences}
+                                      saveSequencesStorage={saveSequencesStorage}
+                                />
+                                <SettingsButton
                                       prevStyle={prevStyle}
                                       setPrevStyle={setPrevStyle}
                                       saveStyleStorage={saveStyleStorage}
-                            />,
+                                />
+                            </View>,
     })
-
-    // Prevent go back from Sequences Screen
-    useEffect(() => navigation.addListener('beforeRemove', (e) => {
-            e.preventDefault()
-        }),[navigation]);
 
     return (
         <Container style={globalStyles.container}>
@@ -122,18 +126,24 @@ const Sequences = () => {
                     {sequences.map(seq => (
                         <ListItem 
                             key={seq.id}
-                            onPress={() => seq.lightSequences.length > 0 ? navigation.navigate('Preview', { sequence: seq , prevStyle}) : null}
                             onLongPress={() => deleteSequenceConfirmation(seq)}
                         >
                             <Left>
                                 <Text style={{fontSize: 18, fontWeight: 'bold'}}>{seq.sequenceName}</Text>
                             </Left>
                             <Right>
-                                <Octicon 
-                                    name='pencil'
-                                    style={{fontSize: 26 , color:'#000'}}
-                                    onPress={() => navigation.navigate("Sequence", {sequences, seq, setSequences, saveSequencesStorage})}
-                                />        
+                                <View style={{flexDirection: 'row'}}>
+                                    <Octicon 
+                                        name='pencil'
+                                        style={{fontSize: 26 , color:'#000'}}
+                                        onPress={() => navigation.navigate("Sequence", {sequences, seq, setSequences, saveSequencesStorage})}
+                                    /> 
+                                    <Entypo
+                                        name='controller-play'
+                                        style={[{fontSize: 26 , marginLeft: 25}, seq.lightSequences.length > 0 ? {color:'#000'} : {color:'#7b7b7b'}]}
+                                        onPress={() => seq.lightSequences.length > 0 ? navigation.navigate('Preview', { sequence: seq , prevStyle}) : null}
+                                    />
+                                </View>    
                             </Right>
                         </ListItem>
 

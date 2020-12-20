@@ -60,3 +60,4 @@ buck-out/
 
 # Key
 /android/gradle.properties
+/android/app/build.gradle
