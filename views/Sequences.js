@@ -6,23 +6,25 @@ import globalStyles from '../styles/global';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Octicon from 'react-native-vector-icons/Octicons';
+import SettingsButton from '../components/ui/SettingsButton';
 
 const Sequences = () => {
+
     // State of sequences
     const [sequences, setSequences] = useState([]);
-    const [prevStyle, setPrevStyle] = useState({
-                                        leftMargin: 50,
-                                        topMargin: 100,
-                                        topLedMargin: 15,
-                                        displayWidth: 527,
-                                        topLedHeight: 40,
-                                        topLedWidth: 14,
-                                        segmentHeight: 122,
-                                        segmentWidth: 74
-            
-    })
 
-    // Using useEffect to update the state
+    // State of the style
+    const [prevStyle, setPrevStyle] = useState({
+                                                leftMargin: 50,
+                                                topMargin: 100,
+                                                topLedMargin: 15,
+                                                displayWidth: 527,
+                                                topLedHeight: 40,
+                                                topLedWidth: 14,
+                                                segmentHeight: 122,
+                                                segmentWidth: 74});
+
+    // Using useEffect to update the states
     useEffect(() => {
         const obtainSequencesStorage = async () => {
             try {
@@ -34,13 +36,34 @@ const Sequences = () => {
                 console.log(error);
             }
         }
+        const obtainPrevStyleStorage = async () => {
+            try {
+                const prevStyleStorage = await AsyncStorage.getItem('prevStyle');
+                if (prevStyleStorage){
+                    setPrevStyle(JSON.parse(prevStyleStorage));
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
         obtainSequencesStorage();
+        obtainPrevStyleStorage();
     }, []);
 
     // Save sequences into the storage
     const saveSequencesStorage = async (sequencesJSON) => {
         try {
             await AsyncStorage.setItem('sequences', sequencesJSON);
+            // console.log("Saved");
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // Save styles into the storage
+    const saveStyleStorage = async (stylesJSON) => {
+        try {
+            await AsyncStorage.setItem('prevStyle', stylesJSON);
             // console.log("Saved");
         } catch (error) {
             console.log(error);
@@ -70,6 +93,19 @@ const Sequences = () => {
 
     const navigation = useNavigation();
 
+    navigation.setOptions({
+        headerRight: () =>  <SettingsButton
+                                      prevStyle={prevStyle}
+                                      setPrevStyle={setPrevStyle}
+                                      saveStyleStorage={saveStyleStorage}
+                            />,
+    })
+
+    // Prevent go back from Sequences Screen
+    useEffect(() => navigation.addListener('beforeRemove', (e) => {
+            e.preventDefault()
+        }),[navigation]);
+
     return (
         <Container style={globalStyles.container}>
             {sequences.length === 0 ? (
@@ -86,7 +122,7 @@ const Sequences = () => {
                     {sequences.map(seq => (
                         <ListItem 
                             key={seq.id}
-                            onPress={() => seq.lightSequences.length > 0 ? navigation.navigate('Preview', { sequence: seq , prevStyle, setPrevStyle}) : null}
+                            onPress={() => seq.lightSequences.length > 0 ? navigation.navigate('Preview', { sequence: seq , prevStyle}) : null}
                             onLongPress={() => deleteSequenceConfirmation(seq)}
                         >
                             <Left>

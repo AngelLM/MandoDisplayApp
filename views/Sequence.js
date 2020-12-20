@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { View, StyleSheet, Alert } from 'react-native';
 import { Container, Text, Content, Button, Card, CardItem, Input } from 'native-base';
 import globalStyles from '../styles/global';
@@ -10,22 +10,29 @@ import SmallDisplay from '../components/SmallDisplay';
 
 const Sequence = ({route}) => {
     // Extracting the params sent via route
-    // console.log(route.params);
     const { sequences, seq, setSequences, saveSequencesStorage } = route.params;
+
+    // State
+    const [editSequences, setEditSequences] = useState([]); 
+
+    useEffect(() => {
+        let seqCopies = JSON.parse(JSON.stringify(sequences));
+        setEditSequences(seqCopies);
+    }, [])
 
     // Navigation
     const navigation = useNavigation();
-
     // Write the new duration
     const writeNewDuration = (duration, durIndex) => {
         // Copy the sequences array and find the index for the current sequence that it is being edited
-        let seqNew = JSON.parse(JSON.stringify(sequences));
+        let seqNew = JSON.parse(JSON.stringify(editSequences));
         let indexSeq = seqNew.findIndex(s => s.id === seq.id);
 
         // Edit the copied array to add the light states to the current sequence
         seqNew[indexSeq].lightSequences[durIndex].duration = parseInt(duration);
 
         // Set the State
+        setEditSequences(seqNew);
         setSequences(seqNew);
         
         // Save it into the storage

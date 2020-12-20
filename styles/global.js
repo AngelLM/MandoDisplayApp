@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { RotationGestureHandler } from 'react-native-gesture-handler';
 
 const globalStyles = StyleSheet.create({
     container: {
@@ -9,13 +8,31 @@ const globalStyles = StyleSheet.create({
     content: {
         flexDirection: 'column',
         marginHorizontal: '2.5%',
-        // marginVertical: '2.5%',
         marginTop: 10,
         flex: 1,
     },
+    contentSettings: {
+        flexDirection: 'row',
+        marginHorizontal: '5%',
+        justifyContent: 'center',
+        flex: 1,
+    },
+    contentAbout: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        marginHorizontal: '10%',
+        marginVertical: '2.5%',
+    },
+    contentMed: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        marginHorizontal: '10%',
+        marginVertical: '2.5%',
+    },
     contentSmall: {
         flexDirection: 'column',
-        // justifyContent: 'center',
         marginHorizontal: '20%',
         marginVertical: '2.5%',
         flex: 1
@@ -55,25 +72,34 @@ const globalStyles = StyleSheet.create({
     },
     title: {
         textAlign: 'center',
-        marginBottom: 15,
+        marginBottom: 10,
         fontSize: 30,
         fontWeight: 'bold',
         color: '#FFF'
     },
     subtitle: {
         textAlign: 'center',
-        marginBottom: 15,
-        fontSize: 22,
+        marginBottom: 10,
+        fontSize: 18,
         fontWeight: 'bold',
         color: '#FFF',
-        marginTop: 20
+        marginTop: 0
     },
     text:{
         textAlign: 'center',
         fontSize: 18,
         color: '#FFF',
         marginTop: 10
-
+    },
+    textAbout:{
+        textAlign: 'center',
+        fontSize: 16,
+        color: '#FFF',
+        marginTop: 5
+    },
+    textSettings:{
+        flex:2, 
+        textAlign:'right'
     },
     input: {
         backgroundColor: "#FFF",
@@ -84,8 +110,16 @@ const globalStyles = StyleSheet.create({
         width: 70,
         borderWidth:1,
         marginHorizontal: 10,
-        // textAlignVertical: 'center',
         textAlign: 'center',
+    },
+    settingsInput:{
+        flex:0.8,
+        height:40,
+        width:50,
+        borderWidth:1,
+        marginHorizontal: 0,
+        textAlign: 'center',
+        backgroundColor: "#FFF",
     },
     button: {
         backgroundColor: '#1b322c',
@@ -280,9 +314,6 @@ const globalStyles = StyleSheet.create({
         top: -72.5,
         left: 40,
     },
-
-    // PREVIEW
-
     containerPreview:{
         backgroundColor: '#000',
         flex: 1,

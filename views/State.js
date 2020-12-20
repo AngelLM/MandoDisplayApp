@@ -9,7 +9,6 @@ import LedButton from '../components/LedButton';
 
 const State = ({route}) => {
     // Extracting the params sent via route
-    // console.log(route);
     const { sequences, seqId, state, setSequences, saveSequencesStorage, stateIndex } = route.params;
 
     // Copy the state object
@@ -96,7 +95,7 @@ const State = ({route}) => {
                                 <LedButton buttonStyle={[globalStyles.verticalLedButton, globalStyles.segmentE ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '24' />
                                 <LedButton buttonStyle={[globalStyles.verticalLedButton, globalStyles.segmentF ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '25' />
                                 <LedButton buttonStyle={[globalStyles.horizontalLedButton, globalStyles.segmentG ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '26' />
-                                <LedButton buttonStyle={[globalStyles.pointLedButton, globalStyles.segmentP ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '27' />
+                                {/* <LedButton buttonStyle={[globalStyles.pointLedButton, globalStyles.segmentP ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '27' /> */}
                             </View>
                             {/* Display 8 Segm #2 */}
                             <View style={globalStyles.DigitDisplay}>
@@ -107,7 +106,7 @@ const State = ({route}) => {
                                 <LedButton buttonStyle={[globalStyles.verticalLedButton, globalStyles.segmentE ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '32' />
                                 <LedButton buttonStyle={[globalStyles.verticalLedButton, globalStyles.segmentF ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '33' />
                                 <LedButton buttonStyle={[globalStyles.horizontalLedButton, globalStyles.segmentG ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '34' />
-                                <LedButton buttonStyle={[globalStyles.pointLedButton, globalStyles.segmentP ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '35' />
+                                {/* <LedButton buttonStyle={[globalStyles.pointLedButton, globalStyles.segmentP ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '35' /> */}
                             </View>
                             {/* Display 8 Segm #3 */}
                             <View style={globalStyles.DigitDisplay}>
@@ -118,7 +117,7 @@ const State = ({route}) => {
                                 <LedButton buttonStyle={[globalStyles.verticalLedButton, globalStyles.segmentE ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '40' />
                                 <LedButton buttonStyle={[globalStyles.verticalLedButton, globalStyles.segmentF ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '41' />
                                 <LedButton buttonStyle={[globalStyles.horizontalLedButton, globalStyles.segmentG ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '42' />
-                                <LedButton buttonStyle={[globalStyles.pointLedButton, globalStyles.segmentP ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '43' />
+                                {/* <LedButton buttonStyle={[globalStyles.pointLedButton, globalStyles.segmentP ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '43' /> */}
                             </View>
                             {/* Display 8 Segm #4 */}
                             <View style={globalStyles.DigitDisplay}>
@@ -129,7 +128,7 @@ const State = ({route}) => {
                                 <LedButton buttonStyle={[globalStyles.verticalLedButton, globalStyles.segmentE ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '48' />
                                 <LedButton buttonStyle={[globalStyles.verticalLedButton, globalStyles.segmentF ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '49' />
                                 <LedButton buttonStyle={[globalStyles.horizontalLedButton, globalStyles.segmentG ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '50' />
-                                <LedButton buttonStyle={[globalStyles.pointLedButton, globalStyles.segmentP ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '51' />
+                                {/* <LedButton buttonStyle={[globalStyles.pointLedButton, globalStyles.segmentP ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '51' /> */}
                             </View>
                             {/* Display 8 Segm #5 */}
                             <View style={globalStyles.DigitDisplay}>
@@ -140,7 +139,7 @@ const State = ({route}) => {
                                 <LedButton buttonStyle={[globalStyles.verticalLedButton, globalStyles.segmentE ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '56' />
                                 <LedButton buttonStyle={[globalStyles.verticalLedButton, globalStyles.segmentF ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '57' />
                                 <LedButton buttonStyle={[globalStyles.horizontalLedButton, globalStyles.segmentG ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '58' />
-                                <LedButton buttonStyle={[globalStyles.pointLedButton, globalStyles.segmentP ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '59' />
+                                {/* <LedButton buttonStyle={[globalStyles.pointLedButton, globalStyles.segmentP ]} stateLights={stateCpy.lightState} setStateLights={setStateLights} colorSequence={colorSequence} id = '59' /> */}
                             </View>
                         </View>
                     </Card>

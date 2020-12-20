@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Card } from 'native-base';
 import globalStyles from '../styles/global';
@@ -52,7 +52,7 @@ const SmallDisplay = (props) => {
                                 <View style={[globalStyles.smallVerticalLed, globalStyles.smallSegmentE, lightState[24]? styles.ledOn : styles.ledOff]}/>
                                 <View style={[globalStyles.smallVerticalLed, globalStyles.smallSegmentF, lightState[25]? styles.ledOn : styles.ledOff]}/>
                                 <View style={[globalStyles.smallHorizontalLed, globalStyles.smallSegmentG, lightState[26]? styles.ledOn : styles.ledOff]}/>
-                                <View style={[globalStyles.smallPointLed, globalStyles.smallSegmentP, lightState[27]? styles.ledOn : styles.ledOff]}/>
+                                {/* <View style={[globalStyles.smallPointLed, globalStyles.smallSegmentP, lightState[27]? styles.ledOn : styles.ledOff]}/> */}
                             </View>
                             {/* Display 8 Segm #2 */}
                             <View style={globalStyles.smallDigitDisplay}>
@@ -63,7 +63,7 @@ const SmallDisplay = (props) => {
                                 <View style={[globalStyles.smallVerticalLed, globalStyles.smallSegmentE, lightState[32]? styles.ledOn : styles.ledOff]}/>
                                 <View style={[globalStyles.smallVerticalLed, globalStyles.smallSegmentF, lightState[33]? styles.ledOn : styles.ledOff]}/>
                                 <View style={[globalStyles.smallHorizontalLed, globalStyles.smallSegmentG, lightState[34]? styles.ledOn : styles.ledOff]}/>
-                                <View style={[globalStyles.smallPointLed, globalStyles.smallSegmentP, lightState[35]? styles.ledOn : styles.ledOff]}/>
+                                {/* <View style={[globalStyles.smallPointLed, globalStyles.smallSegmentP, lightState[35]? styles.ledOn : styles.ledOff]}/> */}
                             </View>
                             {/* Display 8 Segm #3 */}
                             <View style={globalStyles.smallDigitDisplay}>
@@ -74,7 +74,7 @@ const SmallDisplay = (props) => {
                                 <View style={[globalStyles.smallVerticalLed, globalStyles.smallSegmentE, lightState[40]? styles.ledOn : styles.ledOff]}/>
                                 <View style={[globalStyles.smallVerticalLed, globalStyles.smallSegmentF, lightState[41]? styles.ledOn : styles.ledOff]}/>
                                 <View style={[globalStyles.smallHorizontalLed, globalStyles.smallSegmentG, lightState[42]? styles.ledOn : styles.ledOff]}/>
-                                <View style={[globalStyles.smallPointLed, globalStyles.smallSegmentP, lightState[43]? styles.ledOn : styles.ledOff]}/>
+                                {/* <View style={[globalStyles.smallPointLed, globalStyles.smallSegmentP, lightState[43]? styles.ledOn : styles.ledOff]}/> */}
                             </View>
                             {/* Display 8 Segm #4 */}
                             <View style={globalStyles.smallDigitDisplay}>
@@ -85,7 +85,7 @@ const SmallDisplay = (props) => {
                                 <View style={[globalStyles.smallVerticalLed, globalStyles.smallSegmentE, lightState[48]? styles.ledOn : styles.ledOff]}/>
                                 <View style={[globalStyles.smallVerticalLed, globalStyles.smallSegmentF, lightState[49]? styles.ledOn : styles.ledOff]}/>
                                 <View style={[globalStyles.smallHorizontalLed, globalStyles.smallSegmentG, lightState[50]? styles.ledOn : styles.ledOff]}/>
-                                <View style={[globalStyles.smallPointLed, globalStyles.smallSegmentP, lightState[51]? styles.ledOn : styles.ledOff]}/>
+                                {/* <View style={[globalStyles.smallPointLed, globalStyles.smallSegmentP, lightState[51]? styles.ledOn : styles.ledOff]}/> */}
                             </View>
                             {/* Display 8 Segm #5 */}
                             <View style={globalStyles.smallDigitDisplay}>
@@ -96,7 +96,7 @@ const SmallDisplay = (props) => {
                                 <View style={[globalStyles.smallVerticalLed, globalStyles.smallSegmentE, lightState[56]? styles.ledOn : styles.ledOff]}/>
                                 <View style={[globalStyles.smallVerticalLed, globalStyles.smallSegmentF, lightState[57]? styles.ledOn : styles.ledOff]}/>
                                 <View style={[globalStyles.smallHorizontalLed, globalStyles.smallSegmentG, lightState[58]? styles.ledOn : styles.ledOff]}/>
-                                <View style={[globalStyles.smallPointLed, globalStyles.smallSegmentP, lightState[59]? styles.ledOn : styles.ledOff]}/>
+                                {/* <View style={[globalStyles.smallPointLed, globalStyles.smallSegmentP, lightState[59]? styles.ledOn : styles.ledOff]}/> */}
                             </View>
                         </View>
                     </Card>

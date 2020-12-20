@@ -8,7 +8,6 @@ import shortid from 'shortid';
 
 const NewSequence = ({route}) => {
     // Extracting the params sent via route
-    // console.log(route);
     const { sequences, setSequences, saveSequencesStorage } = route.params;
     
     // Navigation

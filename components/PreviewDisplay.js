@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Container } from 'native-base';
 // import previewStyles from '../styles/global';
 
 const PreviewDisplay = (props) => {

@@ -7,7 +7,6 @@ import { useNavigation } from '@react-navigation/native'
 
 const ColorPick = ({route}) => {
     // Extracting the params sent via route
-    // console.log(route);
     const { sequences, seqId, setSequences, saveSequencesStorage } = route.params;
     let index = sequences.findIndex(s => s.id === seqId);
 

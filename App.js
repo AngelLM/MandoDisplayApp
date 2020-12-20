@@ -8,30 +8,50 @@ import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
 
 // Import views
+import Start from './views/Start';
 import Sequences from './views/Sequences';
 import NewSequence from './views/NewSequence';
 import Sequence from './views/Sequence';
 import State from './views/State';
 import ColorPick from './views/ColorPick';
 import Preview from './views/Preview';
+import TestPreview from './views/TestPreview';
+import Settings from './views/Settings';
+import About from './views/About';
 
 import AddStateButton from './components/ui/AddStateButton';
 import ColorButton from './components/ui/ColorButton';
-import SettingsButton from './components/ui/SettingsButton';
 import HelpButton from './components/ui/HelpButton';
-
 
 const App = () => {
   return (
     <>
       <Root>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Sequences"
+          <Stack.Navigator initialRouteName="Start"
           >
+            <Stack.Screen 
+              name='Start'
+              component={Start}
+              options={({route}) => { 
+                return({
+                title: 'Start',
+                headerTitleAlign: 'center',
+                headerTintColor: '#FFF',
+                headerStyle:{
+                  backgroundColor: '#244a3b'
+                },
+                headerTitleStyle:{
+                  fontWeight: 'bold'
+                },
+                headerShown: false
+              })}}
+            />
             <Stack.Screen 
               name='Sequences'
               component={Sequences}
-              options={({route}) => ({
+              options={({route}) => { 
+                return({
                 title: 'Mando Chest Display',
                 headerTitleAlign: 'center',
                 headerTintColor: '#FFF',
@@ -41,11 +61,9 @@ const App = () => {
                 headerTitleStyle:{
                   fontWeight: 'bold'
                 },
-                headerRight: () =>  <SettingsButton
-                                    />,
                 headerLeft: () =>  <HelpButton
                 />
-              })}
+              })}}
             />
               <Stack.Screen 
                 name='NewSequence'
@@ -129,6 +147,52 @@ const App = () => {
                   fontWeight: 'bold'
                 },
                 headerShown: false
+              }}
+            />
+            <Stack.Screen 
+              name='TestPreview'
+              component={TestPreview}
+              options={{
+                title: 'TestPreview',
+                headerTitleAlign: 'center',
+                headerTintColor: '#FFF',
+                headerStyle:{
+                  backgroundColor: '#244a3b'
+                },
+                headerTitleStyle:{
+                  fontWeight: 'bold'
+                },
+                headerShown: false
+              }}
+            />
+            <Stack.Screen 
+              name='Settings'
+              component={Settings}
+              options={{
+                title: 'Display Settings',
+                headerTitleAlign: 'center',
+                headerTintColor: '#FFF',
+                headerStyle:{
+                  backgroundColor: '#244a3b'
+                },
+                headerTitleStyle:{
+                  fontWeight: 'bold'
+                },
+              }}
+            />
+            <Stack.Screen 
+              name='About'
+              component={About}
+              options={{
+                title: 'Mando Chest Display 1.0.0',
+                headerTitleAlign: 'center',
+                headerTintColor: '#FFF',
+                headerStyle:{
+                  backgroundColor: '#244a3b'
+                },
+                headerTitleStyle:{
+                  fontWeight: 'bold'
+                },
               }}
             />
           </Stack.Navigator>
