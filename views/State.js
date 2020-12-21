@@ -10,7 +10,6 @@ import LedButton from '../components/LedButton';
 const State = ({route}) => {
     // Extracting the params sent via route
     const { sequences, seqId, state, setSequences, saveSequencesStorage, stateIndex } = route.params;
-
     // Copy the state object
     let stateCpy = JSON.parse(JSON.stringify(state));
     // Navigation
@@ -45,7 +44,6 @@ const State = ({route}) => {
         // Copy the sequences array and find the index for the current sequence that it is being edited
         let seqNew = JSON.parse(JSON.stringify(sequences)); //let seqNew = [...sequences];
         let index = seqNew.findIndex(s => s.id === seqId);
-        
         // Edit the copied array to modify the light states to the current sequence
         seqNew[index].lightSequences[stateIndex].lightState = stateCpy.lightState;
         // Set the State

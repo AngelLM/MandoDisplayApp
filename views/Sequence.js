@@ -23,7 +23,7 @@ const Sequence = ({route}) => {
     useEffect(() => {
         let seqCopies = JSON.parse(JSON.stringify(sequences));
         setEditSequences(seqCopies);
-    }, [])
+    }, [route.params])
 
     const iSeq = sequences.findIndex(s => s.id === seq.id);
 
@@ -101,7 +101,7 @@ const Sequence = ({route}) => {
                         <Text style={globalStyles.text}>Start adding a new state!</Text>
                     ) : (null)}
                     
-                    <View>
+                    <View style={{alignItems:'center'}}>
                         {seq.lightSequences.map((ligSeq, index) => (
                             <View style={{flexDirection: 'row'}}>
                                 <SmallDisplay lightSequence={ligSeq} colorSequence={seq.colorSequence}/>

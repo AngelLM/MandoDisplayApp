@@ -65,7 +65,7 @@ const Start = () => {
                     <View style={{borderBottomColor: 'white', borderBottomWidth: 1}}></View>
                 </View>
                 <View style={{justifyContent:'center', alignItems: 'center'}}>
-                    <Text style={globalStyles.textAbout}>
+                    <Text style={[globalStyles.textAbout, {fontSize: 20}]}>
                         {rndText}
                     </Text>
                     <Progress.Bar
@@ -73,8 +73,8 @@ const Start = () => {
                         progress={state.progress}
                         color= '#FFF'
                         indeterminate={state.indeterminate}
-                        width={300}
-                        height={10}
+                        width={400}
+                        height={12}
                     />
                 </View>
                 <View style={{justifyContent:'center', alignItems: 'center'}}>

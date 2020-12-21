@@ -197,7 +197,7 @@ const App = () => {
               name='About'
               component={About}
               options={{
-                title: 'Mando Chest Display 1.0.0',
+                title: 'Mando Chest Display 1.0',
                 headerTitleAlign: 'center',
                 headerTintColor: '#FFF',
                 headerStyle:{

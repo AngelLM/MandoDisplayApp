@@ -31,7 +31,7 @@ const ColorPick = ({route}) => {
 
     return (
         <Container style={globalStyles.container}>
-            <View style={[globalStyles.content]}>
+            <View style={[globalStyles.contentSmall]}>
                 <ColorPicker
                     defaultColor= {colorStr}
                     onColorChange={color => setColorStr(fromHsv(color))}

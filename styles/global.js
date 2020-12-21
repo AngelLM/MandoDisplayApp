@@ -20,7 +20,7 @@ const globalStyles = StyleSheet.create({
     contentAbout: {
         flex: 1,
         flexDirection: 'column',
-        justifyContent: 'flex-start',
+        justifyContent: 'space-between',
         marginHorizontal: '10%',
         marginVertical: '2.5%',
     },
