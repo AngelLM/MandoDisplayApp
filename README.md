@@ -10,7 +10,7 @@ The app allows the user to create, store and display sequences.
 
 The last version of this app can be downloaded [here](https://github.com/AngelLM/MandoDisplayApp/releases).
 
-![Preview Sequence](docs/preview_sequence.gif)
+![Preview Sequence](docs/show_sequence.gif)
 
 # Features
 ## Adding a new sequence
