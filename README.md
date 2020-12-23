@@ -1,7 +1,7 @@
 <img align="right" width=120 src="docs/applogo.png" />
 
 # Mando Chest Display (MCD)
-![GitHub](https://img.shields.io/github/license/AngelLM/MandoDisplayApp)
+![GitHub](https://img.shields.io/github/license/angellm/mandodisplayapp)
 
 
 MandoDisplayApp or "Mando Chest Display (MCD)" is an app that recreates the chest display of Boba Fett, character of Star Wars films.
